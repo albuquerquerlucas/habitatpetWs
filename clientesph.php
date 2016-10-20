@@ -24,7 +24,7 @@
                             </h1>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div >
                             <h6 style="color: white; margin-top: 20px;">
                                 habitatpet@hotmail.com   &nbsp;&nbsp;&nbsp;&nbsp;  
@@ -32,6 +32,20 @@
                                 versão 1.0
                             </h6>
                         </div>
+                    </div>
+                    <div class="col-md-2">
+                      <div class="navbar navbar-inverse" role="banner">
+                          <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
+                            <ul class="nav navbar-nav">
+                              <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuário <b class="caret"></b></a>
+                                <ul class="dropdown-menu animated fadeInUp">
+                                  <li><a href="loginph.php">Sair</a></li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </nav>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -57,7 +71,7 @@
                                 </a>
                                 <ul>
                                     <li class="current" ><a href="http://localhost/habitatpetWs/clientesph.php">Cadastrar Clientes</a></li>
-                                    <li><a href="#">Visualizar</a></li>
+                                    <li><a href="http://localhost/habitatpetWs/visualizarClientesph.php">Visualizar</a></li>
                                 </ul>
                             </li>
 
@@ -68,7 +82,7 @@
                                 </a>
                                 <ul>
                                     <li><a href="http://localhost/habitatpetWs/peixesph.php">Cadastrar Espécies</a></li>
-                                    <li><a href="http://localhost/habitatpetWs/serverside/exibirPeixesJson.php">Visualizar</a></li>
+                                    <li><a href="http://localhost/habitatpetWs/visualizarPeixesph.php">Visualizar</a></li>
                                 </ul>
                             </li>
 
@@ -79,7 +93,7 @@
                                 </a>
                                 <ul>
                                     <li><a href="http://localhost/habitatpetWs/plantasph.php">Cadastrar Espécies</a></li>
-                                    <li><a href="http://localhost/habitatpetWs/serverside/exibirPlantasJson.php">Visualizar</a></li>
+                                    <li><a href="http://localhost/habitatpetWs/visualizarPlantasph.php">Visualizar</a></li>
                                 </ul>
                             </li>
 

@@ -8,10 +8,8 @@
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
         <link href="private/css/styles.css" rel="stylesheet" />
-        
     </head>
     <body>
-
         <nav class="navbar navbar-default navbar-fixed-top">
         <!-- Cabeçalho -->
         <div class="header">
@@ -52,7 +50,7 @@
             </div>
         </div>
         <!-- /Cabeçalho -->
-        </nav><br/><br/><br/> 
+        </nav><br/><br/><br/>
 
         <div class="page-content">
             <div class="row">
@@ -61,7 +59,7 @@
                     <div class="sidebar content-box" style="display: block;">
                         <ul class="nav">
                             
-                            <li class="current"><a href="http://localhost/habitatpetWs/">
+                            <li class=""><a href="http://localhost/habitatpetWs/">
                                 <i class="glyphicon glyphicon-home"></i> Início</a>
                             </li>
 
@@ -87,14 +85,14 @@
                                 </ul>
                             </li>
 
-                            <li class="submenu">
+                            <li class="current submenu">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-leaf"></i> Plantas
                                     <span class="caret pull-right"></span>
                                 </a>
                                 <ul>
                                     <li><a href="http://localhost/habitatpetWs/plantasph.php">Cadastrar Espécies</a></li>
-                                    <li><a href="http://localhost/habitatpetWs/visualizarPlantasph.php">Visualizar</a></li>
+                                    <li class="current"><a href="http://localhost/habitatpetWs/serverside/exibirPlantasJson.php">Visualizar</a></li>
                                 </ul>
                             </li>
 
@@ -129,12 +127,50 @@
                     <div class="row">
                         <div class="col-md-10">
                             <div class="content-box-large">
+                                <div class="panel-heading">
+                                    <h3>
+                                        <i class="glyphicon glyphicon-th-list"></i>&nbsp;
+                                        Relação de Plantas Cadastrados
+                                    </h3>
+                                </div>
 
                                 <!-- Corpo do painel -->
-                                <div class="panel-body">
-                                    <!-- Painel Principal -->
-                                    <img class="img-responsive" src="private/img/banner.png" alt="" >
-                                    <!-- /Painel Principal-->
+                                <div class="content-box-large">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Plantas atualmente na base de dados</div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <table cellpadding="0" cellspacing="0" border="0" class="table table-responsive table-bordered" id="example">
+                                            <thead>
+                                                <tr>
+                                                    <th>Cód</th>
+                                                    <th>Nome</th>
+                                                    <th>Nome Científico</th>
+                                                    <th>Disponível</th>
+                                                    <th>Detalhes</th>
+                                                    <th>Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="odd gradeX">
+                                                    <td>1</td>
+                                                    <td>Bromélia</td>
+                                                    <td>Pterophyllum Scalare</td>
+                                                    <td class="center">Sim</td>
+                                                    <td class="center"><a data-toggle="modal" data-target="#myModal">visualizar</a></td>
+                                                    <td class="center">
+                                                        <button class="btn btn-warning" type="submit">
+                                                            <i class="glyphicon glyphicon-pencil"></i>
+                                                        </button>
+                                                        <button class="btn btn-danger" type="submit">
+                                                            <i class="glyphicon glyphicon-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table><hr/>
+                                        <div>Total de Plantas Cadastrados: 1</div>
+                                    </div>
                                 </div>
                                 <!-- /Corpo do painel -->
                             </div>
@@ -142,7 +178,29 @@
                     </div>
                 </div>
                 <!-- /Painel principal do centro -->
+
+                <div class="col-md-2">
+                </div>
+
+                <!-- Painel de Informações -->
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="content-box-large">
+                                <div class="panel-heading">
+                                    <h3>Observações:</h3>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Painel de Informações -->
             </div>
+        </div>
+
+        <div class="col-md-12">
+            <br/><br/><br/><br/>
         </div>
 
         <!-- Rodapé da página -->
@@ -157,8 +215,44 @@
         <!-- /Rodapé da página -->
         </nav>
 
+        <!-- Modal Exibir Foto Peixes -->
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Bromélia</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="http://localhost/habitatpetWs/serverside/imgs/iPlantas/ccdc56781d336dd1415317ac220c9f68.png" alt="">
+                    </div>
+                    <div class="col-md-8">
+                        <strong>Descrição:</strong><br/><br/>
+                        São plantas delicadas, de tamanho médio que podem facilmente ser inseridas com substrato simples.
+                        <br/><br/>
+                        <strong>Plantio:</strong><br/><br/>
+                        Emersão total. Geralmente na parte inferior do aquário sob o manto de cascalho.
+                    </div>
+                    
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-prymary" data-dismiss="modal">Fechar</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- /Modal Exibir Foto Peixes -->
+
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="private/js/custom.js"></script>
+        <script src="private/js/tables.js"></script>
     </body>
 </html>

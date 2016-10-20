@@ -8,10 +8,8 @@
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
         <link href="private/css/styles.css" rel="stylesheet" />
-        
     </head>
     <body>
-
         <nav class="navbar navbar-default navbar-fixed-top">
         <!-- Cabeçalho -->
         <div class="header">
@@ -52,7 +50,7 @@
             </div>
         </div>
         <!-- /Cabeçalho -->
-        </nav><br/><br/><br/> 
+        </nav><br/><br/><br/>
 
         <div class="page-content">
             <div class="row">
@@ -61,18 +59,18 @@
                     <div class="sidebar content-box" style="display: block;">
                         <ul class="nav">
                             
-                            <li class="current"><a href="http://localhost/habitatpetWs/">
+                            <li class=""><a href="http://localhost/habitatpetWs/">
                                 <i class="glyphicon glyphicon-home"></i> Início</a>
                             </li>
 
-                            <li class="submenu">
+                            <li class="current submenu">
                                 <a href="#">
                                     <i class="glyphicon glyphicon-user"></i> Clientes
                                     <span class="caret pull-right"></span>
                                 </a>
                                 <ul>
                                     <li><a href="http://localhost/habitatpetWs/clientesph.php">Cadastrar Clientes</a></li>
-                                    <li><a href="http://localhost/habitatpetWs/visualizarClientesph.php">Visualizar</a></li>
+                                    <li class="current"><a href="http://localhost/habitatpetWs/visualizarClientesph.php">Visualizar</a></li>
                                 </ul>
                             </li>
 
@@ -82,7 +80,7 @@
                                     <span class="caret pull-right"></span>
                                 </a>
                                 <ul>
-                                    <li><a href="http://localhost/habitatpetWs/peixesph.php">Cadastrar Espécies</a></li>
+                                    <li  ><a href="http://localhost/habitatpetWs/peixesph.php">Cadastrar Espécies</a></li>
                                     <li><a href="http://localhost/habitatpetWs/visualizarPeixesph.php">Visualizar</a></li>
                                 </ul>
                             </li>
@@ -129,12 +127,59 @@
                     <div class="row">
                         <div class="col-md-10">
                             <div class="content-box-large">
+                                <div class="panel-heading">
+                                    <h3>
+                                        <i class="glyphicon glyphicon-th-list"></i>&nbsp;
+                                        Relação de Clientes Cadastrados
+                                    </h3>
+                                </div>
 
                                 <!-- Corpo do painel -->
-                                <div class="panel-body">
-                                    <!-- Painel Principal -->
-                                    <img class="img-responsive" src="private/img/banner.png" alt="" >
-                                    <!-- /Painel Principal-->
+                                <div class="content-box-large">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">Clientes atualmente na base de dados</div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <table cellpadding="0" cellspacing="0" border="0" class="table table-responsive table-bordered" id="example">
+                                            <thead>
+                                                <tr>
+                                                    <th>Cód</th>
+                                                    <th>Nome</th>
+                                                    <th>E-mail</th>
+                                                    <th>Ações</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="odd gradeX">
+                                                    <td>1</td>
+                                                    <td>Lucas Albuquerque</td>
+                                                    <td>albuquerque.r.lucas@gmail.com</td>
+                                                    <td class="center">
+                                                        <button class="btn btn-warning" type="submit">
+                                                            <i class="glyphicon glyphicon-pencil"></i>
+                                                        </button>
+                                                        <button class="btn btn-danger" type="submit">
+                                                            <i class="glyphicon glyphicon-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                                <tr class="odd gradeY">
+                                                    <td>2</td>
+                                                    <td>Mayara Nascimento</td>
+                                                    <td>mayaranasctolima@gmail.com</td>
+                                                    <td class="center">
+                                                        <button class="btn btn-warning" type="submit">
+                                                            <i class="glyphicon glyphicon-pencil"></i>
+                                                        </button>
+                                                        <button class="btn btn-danger" type="submit">
+                                                            <i class="glyphicon glyphicon-trash"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table><hr/>
+                                        <div>Total de Peixes Cadastrados: 2</div>
+                                    </div>
                                 </div>
                                 <!-- /Corpo do painel -->
                             </div>
@@ -142,7 +187,29 @@
                     </div>
                 </div>
                 <!-- /Painel principal do centro -->
+
+                <div class="col-md-2">
+                </div>
+
+                <!-- Painel de Informações -->
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="content-box-large">
+                                <div class="panel-heading">
+                                    <h3>Observações:</h3>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Painel de Informações -->
             </div>
+        </div>
+
+        <div class="col-md-12">
+            <br/><br/><br/><br/>
         </div>
 
         <!-- Rodapé da página -->
@@ -157,8 +224,10 @@
         <!-- /Rodapé da página -->
         </nav>
 
+
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="private/js/custom.js"></script>
+        <script src="private/js/tables.js"></script>
     </body>
 </html>

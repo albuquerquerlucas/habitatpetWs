@@ -6,7 +6,7 @@ class CriaCOnexao {
 
 	public function conectar(){
 
-		require_once "include/ConfiguracaoDb.php";
+		require_once "ConfiguracaoDb.php";
 
 		$this->conexao = new mysqli(ENDERECO_DB, USUARIO_DB, SENHA_DB, NOME_BANCO_DB) or die ("Erro ao conectar-se...");
 

@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
     <head>
-
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Habitat Pet Web Service</title>
 
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
         <link href="private/css/styles.css" rel="stylesheet" />
+
     </head>
     <body>
+      <?php
+        require_once "serverside/include/UsuariosDAO.php";
+        $id = $_GET["id"];
+        $sql = mysql_query("SELECT *FROM usuarios where id = '$id'");
+        $linha = mysql_fetch_assoc($sql);
+        var_dump($linha);
+        die();
+      ?>
         <nav class="navbar navbar-default navbar-fixed-top">
         <!-- Cabeçalho -->
         <div class="header">
@@ -69,8 +78,8 @@
                                     <span class="caret pull-right"></span>
                                 </a>
                                 <ul>
-                                    <li><a href="http://localhost/habitatpetWs/clientesph.php">Cadastrar Clientes</a></li>
-                                    <li class="current"><a href="http://localhost/habitatpetWs/visualizarClientesph.php">Visualizar</a></li>
+                                    <li class="current" ><a href="http://localhost/habitatpetWs/clientesph.php">Cadastrar Clientes</a></li>
+                                    <li><a href="http://localhost/habitatpetWs/visualizarClientesph.php">Visualizar</a></li>
                                 </ul>
                             </li>
 
@@ -80,7 +89,7 @@
                                     <span class="caret pull-right"></span>
                                 </a>
                                 <ul>
-                                    <li  ><a href="http://localhost/habitatpetWs/peixesph.php">Cadastrar Espécies</a></li>
+                                    <li><a href="http://localhost/habitatpetWs/peixesph.php">Cadastrar Espécies</a></li>
                                     <li><a href="http://localhost/habitatpetWs/visualizarPeixesph.php">Visualizar</a></li>
                                 </ul>
                             </li>
@@ -129,66 +138,54 @@
                             <div class="content-box-large">
                                 <div class="panel-heading">
                                     <h3>
-                                        <i class="glyphicon glyphicon-th-list"></i>&nbsp;
-                                        Relação de Clientes Cadastrados
+                                        <i class="glyphicon glyphicon-pencil"></i>&nbsp;
+                                        Formulário para Cadastro de Clientes
                                     </h3>
                                 </div>
 
                                 <!-- Corpo do painel -->
-                                <div class="content-box-large">
-                                    <div class="panel-heading">
-                                        <div class="panel-title">Clientes atualmente na base de dados</div>
-                                    </div>
-                                    <div class="panel-body">
-                                        <table cellpadding="0" cellspacing="0" border="0" class="table table-responsive table-bordered" id="example">
-                                            <thead>
-                                                <tr>
-                                                    <th>Cód</th>
-                                                    <th>Nome</th>
-                                                    <th>E-mail</th>
-                                                    <th>Ações</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                              <?php
-                                              require_once "serverside/include/UsuariosDAO.php";
-                                              $db = new UsuariosDAO();
+                                <div class="panel-body">
+                                    <!-- Formulário de cadastro de peixes -->
+                                    <form action="serverside/cadastroUsuarios.php" method="POST" name="cadastro">
+                                        <fieldset>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <div class="form-group">
+                                                        <label for="nome">Nome e Sobrenome *</label>
+                                                        <input id="nome" class="form-control" name="nome" placeholder="" type="text" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="form-group">
+                                                        <label for="email">E-mail *</label>
+                                                        <input id="email" class="form-control" name="email" placeholder="" type="text" required>
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                              $rows = $db->exibirLista();
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="senha">Senha *</label>
+                                                        <input id="senha" class="form-control" name="senha" placeholder="" type="password" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="">Confirmar Senha *</label>
+                                                        <input id="senhaConfirm" class="form-control" name="senhaConfirm" placeholder="" type="password" required>
+                                                    </div>
+                                                </div>
+                                            </div><hr/>
 
-                                              if ($rows != false) {
-                                    						while ($linha = $rows->fetch_assoc()) {
-                                                     $id = $linha['id'];
-                                    							 $nome = $linha['nome'];
-                                                  $email = $linha['email'];
-
-                                                  echo "<tr class='odd gradeX'>";
-                                                  echo "<td>$id</td>";
-                                    							echo "<td>$nome</td>";
-                                                  echo "<td>$email</td>";
-                                                  // echo "<a href='editar.php?&id=".$linha['id']."'><input type='submit' value='Editar' class='btn btn-primary btn-sm button'></a>";
-                                                  echo "<td class='center'>
-                                                          <a href='editarClientesph.php?&id=".$id."'>
-                                                            <button class='btn btn-warning' type='submit'>
-                                                              <i class='glyphicon glyphicon-pencil'></i>
-                                                            </button>
-                                                          </a>
-                                                          <a href=''>
-                                                            <button class='btn btn-danger' type='submit'>
-                                                              <i class='glyphicon glyphicon-trash'></i>
-                                                            </button>
-                                                          </a>
-                                                        </td>";
-                                                  echo "</tr>";
-                                    						}
-                                    					}else{
-                                    						echo "Não existe registros";
-                                    					}
-                                              ?>
-                                            </tbody>
-                                        </table><hr/>
-                                        <div>Total de Peixes Cadastrados: 2</div>
-                                    </div>
+                                            <div>
+                                                <input  type="submit" class="btn btn-primary" value="Salvar"/>
+                                                <!-- data-toggle="modal" data-target="#myModal"-->
+                                                <input  type="reset" class="btn btn-default" value="limpar"/>
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                    <!-- /Formulário de cadastro de peixes -->
                                 </div>
                                 <!-- /Corpo do painel -->
                             </div>
@@ -198,6 +195,11 @@
                 <!-- /Painel principal do centro -->
 
                 <div class="col-md-2">
+                <?php
+                    if($_GET){
+                        echo "<script type='text/javascript'>alert('Cliente Cadastrado com Sucesso!');</script>";
+                    }
+                ?>
                 </div>
 
                 <!-- Painel de Informações -->
@@ -207,18 +209,19 @@
                             <div class="content-box-large">
                                 <div class="panel-heading">
                                     <h3>Observações:</h3>
-
+                                    (*) Campos de preenchimento obrigatório.
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div><br/><br/><br/>
                 <!-- /Painel de Informações -->
-            </div>
-        </div>
 
-        <div class="col-md-12">
-            <br/><br/><br/><br/>
+                <div class="col-md-12">
+                    <br/><br/><br/><br/>
+                </div>
+
+            </div>
         </div>
 
         <!-- Rodapé da página -->
@@ -233,10 +236,29 @@
         <!-- /Rodapé da página -->
         </nav>
 
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Confirmação de Cadastro</h4>
+                </div>
+                <div class="modal-body">
+                  <p>O usuário foi cadastrado com sucesso!</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+
+            </div>
+        </div>
 
         <script src="https://code.jquery.com/jquery.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="private/js/custom.js"></script>
-        <script src="private/js/tables.js"></script>
     </body>
 </html>
